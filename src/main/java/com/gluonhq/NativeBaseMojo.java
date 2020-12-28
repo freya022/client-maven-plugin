@@ -106,6 +106,9 @@ public abstract class NativeBaseMojo extends AbstractMojo {
     @Parameter(property = "client.nativeImageArgs")
     List<String> nativeImageArgs;
 
+    @Parameter(property = "client.linkerArgs")
+    List<String> linkerArgs;
+
     @Parameter(readonly = true, required = true, defaultValue = "${project.build.directory}/client")
     File outputDir;
 
@@ -175,6 +178,7 @@ public abstract class NativeBaseMojo extends AbstractMojo {
         clientConfig.setResourcesList(resourcesList);
         clientConfig.setJniList(jniList);
         clientConfig.setCompilerArgs(nativeImageArgs);
+        clientConfig.setLinkerArgs(linkerArgs);
         clientConfig.setReflectionList(reflectionList);
         clientConfig.setAppId(project.getGroupId() + "." + project.getArtifactId());
         clientConfig.setAppName(project.getName());
